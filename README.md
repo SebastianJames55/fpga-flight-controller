@@ -1,9 +1,9 @@
 # FPGA Flight Controller
 
-![](quad.jpg)
+![]()
 
-This was my final project for CS 429H Computer Architecture (freshman year fall, UT Austin).
-Done in collaboration with [William Wang](https://github.com/wwang0) and [Andrew Nolte](https://github.com/AndrewNolte).
+This was my final year project for EC 492 Project (4th-year, Electronics & Communication branch, Govt. Model Engineering College).
+Done in collaboration with [Athul John Kurian](), [Medha Lakshman Rao](https://github.com/MedhaLakshmanRao) and [Omar Bin Shafi]().
 
 ## Our Project
 
@@ -13,15 +13,17 @@ the flight parameters to achieve stable flight using a radio transmitter.
 
 ## Background
 
+We have used an app installed on a smartphone (can also be done in a system) as the RC transmitter to send the control values over WiFi to the 
+ESP-01 on board. The ESP-01 is connected using GPIO pins to the FPGA.
 Control of a quadcopter begins with the radio receiver, which captures stick values from the radio transmitter used to
 fly the drone. These values are interpreted as "intended" angular velocities for the drone about the three coordinate
 axes. Inside the FC, a control loop compares the intended velocities to the actual velocities reported by an onboard
-gyroscope module. Finally, it calculates what motor power setting would most quickly correct the error and communicates
+gyroscope module as part of the MPU-6050. Finally, it calculates what motor power setting would most quickly correct the error and communicates
 the result to the motors.
 
 ## Block Diagram
 
-![](block_diagram.png)
+![]()
 
 ## PPM Decoder (`ppm_decoder.sv`)
 
@@ -31,13 +33,12 @@ signal by setting a counter-timer and measuring the intervals between rising edg
 are then manipulated and written out to the appropriate channels in the module's output, which are determined using a
 finite-state model of PPM channel transmission.
 
-## Gyroscope Communication (`i2c_master.sv`, `mpu6050_driver.sv`, `lpf.sv`)
+## Gyroscope Communication (`i2c_master.sv`, `mpu6050_driver.sv`)
 
 The `i2c_master` submodule implements a generic [I2C](https://en.wikipedia.org/wiki/I%C2%B2C) master that accepts a variety of read/write commands to any slave and reports what state it is
 in. It supports variable frequencies as well as handles clock stretching by the slave. The `mpu6050_driver` submodule
 leverages the `i2c_master` submodule to communicate with the actual MPU6050 gyroscope. On boot, it performs necessary configuration to the MPU6050 registers,
-and then begins outputting the gyroscope readings in an infinite loop. Finally, these values are fed into the low-pass
-filter module that uses an exponential moving average to filter out high-frequency noise.
+and then begins outputting the gyroscope readings in an infinite loop. The in-built filter of the MPU-6050 module has been accessed and made use of to filter noise from the gyro readings.
 
 ## PID Control Loop (`pid.sv`)
 
@@ -84,7 +85,8 @@ because debugging hardware in the real world is extremely difficult.
 
 ### What was the relative contribution of each team member
 
-- Kevin: I2C master (`i2c_master.sv`), gyro communication (`mpu6050_driver.sv`), low-pass filter (`lpf.sv`)
-- William: RX communication (`ppm_decoder.sv`), motor communication (`pwm_encoder.sv`), soldering
-- Andrew: designed motor mixing and PID algorithms (`pid.sv`)
-- All worked on: top-level module (`main.sv`), tuning of PID values, presentations, overall design
+- Athul: PPM decoder, gyro communication (`mpu6050_driver.sv`), top-level module (`main.sv`), and PID tuning.
+- Medha: PWM encoder. 
+- Omar: PPM encoder, PID algorithms, top-level module (`main.sv`), and overall design.
+- Sebastian: I2C protocol.
+- All worked on: Presentations, documentation.
