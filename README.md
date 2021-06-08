@@ -2,7 +2,7 @@
 
 ![]()
 
-This was my final year project for EC 492 Project (4th-year, Electronics & Communication branch, Govt. Model Engineering College).
+This was my final year project for EC 492 Project (4th-year, Electronics & Communication branch, Govt. Model Engineering College, Thrikkakara, Ernakulam, Kerala, India).
 Done in collaboration with [Athul John Kurian](), [Medha Lakshman Rao](https://github.com/MedhaLakshmanRao) and [Omar Bin Shafi]().
 
 ## Our Project
