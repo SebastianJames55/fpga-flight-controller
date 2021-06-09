@@ -87,6 +87,6 @@ because debugging hardware in the real world is extremely difficult.
 
 - Athul: PPM decoder, gyro communication (`mpu6050_driver.sv`), top-level module (`main.sv`), and PID tuning.
 - Medha: PWM encoder. 
-- Omar: PPM encoder, PID algorithms, top-level module (`main.sv`), and overall design.
+- Omar: RX transmission, I2C protocol, PID algorithms, top-level module (`main.sv`), and overall design.
 - Sebastian: I2C protocol.
 - All worked on: Presentations, documentation.
