@@ -13,7 +13,7 @@ the flight parameters to achieve stable flight using a radio transmitter.
 
 ## Background
 
-We have used an app installed on a smartphone (can also be done in a system) as the RC transmitter to send the control values over WiFi to the 
+We have used an app installed on a smartphone (can also be done in a system) / webpage in a browser as the RC to [send the control values over WiFi](https://www.instructables.com/Wifi-PPM-no-App-Needed/) to the 
 ESP-01 on board. The ESP-01 is connected using GPIO pins to the FPGA.
 Control of a quadcopter begins with the radio receiver, which captures stick values from the radio transmitter used to
 fly the drone. These values are interpreted as "intended" angular velocities for the drone about the three coordinate
