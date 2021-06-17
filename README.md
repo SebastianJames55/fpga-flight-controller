@@ -8,8 +8,7 @@ Done in collaboration with [Athul John Kurian](https://github.com/AJK0007), [Med
 ## Our Project
 
 In this project, we designed a flight controller (FC) module in SystemVerilog to fly a quadcopter. We deployed our code
-to an Altera Cyclone II FPGA development board and installed the board on the quadcopter, along with other necessary hardware. We tuned
-the flight parameters to achieve stable flight using a radio transmitter.
+to an Altera Cyclone II FPGA development board and installed the board on the quadcopter, along with other necessary hardware.
 
 ## Background
 
@@ -20,10 +19,6 @@ fly the drone. These values are interpreted as "intended" angular velocities for
 axes. Inside the FC, a control loop compares the intended velocities to the actual velocities reported by an onboard
 gyroscope module as part of the MPU-6050. Finally, it calculates what motor power setting would most quickly correct the error and communicates
 the result to the motors.
-
-## Block Diagram
-
-![]()
 
 ## PPM Decoder (`ppm_decoder.sv`)
 
@@ -65,8 +60,7 @@ to determine if a wire should be pulled low. When the counter reaches a critical
 ### What worked?
 
 Debugging hardware by observing signals in oscilloscope, verifying HDL logic using simulation
-before deploying it, integrating general signal processing techniques (EMA lowpass filter) to eliminate jitter,
-using principled PID tuning methods (Ziegler-Nichols method).
+before deploying it, using principled PID tuning methods (Ziegler-Nichols method).
 
 ### What didn't work?
 
@@ -85,7 +79,7 @@ because debugging hardware in the real world is extremely difficult.
 
 ### What was the relative contribution of each team member
 
-- Athul: PPM decoder, gyro communication (`mpu6050_driver.sv`), top-level module (`main.sv`), and PID tuning.
+- Athul: PPM decoder, gyro communication (`mpu6050_driver.sv`), top-level module (`main.sv`), PID tuning, and hardware implementation.
 - Medha: PWM encoder. 
 - Omar: RC transmission & reception, I2C protocol, PID algorithms, top-level module (`main.sv`), and overall design.
 - Sebastian: I2C protocol, and PID.
